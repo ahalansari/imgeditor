@@ -1,0 +1,28 @@
+# CUDA/RTX 3060 optimized requirements
+# Install with: pip install -r requirements_cuda.txt
+
+Flask==2.3.3
+Pillow==10.0.1
+
+# PyTorch with CUDA support (adjust based on your CUDA version)
+torch>=2.0.0
+torchaudio>=2.0.0  
+torchvision>=0.15.0
+
+# Hugging Face ecosystem
+transformers>=4.55.0
+diffusers>=0.36.0
+accelerate>=1.10.0
+peft>=0.17.0
+
+# Model and data handling
+safetensors>=0.6.0
+huggingface_hub>=0.34.0
+
+# Additional optimizations for CUDA
+xformers>=0.0.20  # Memory efficient attention (optional but recommended)
+bitsandbytes>=0.41.0  # Quantization support (optional)
+
+# Utilities
+numpy>=1.21.0
+requests>=2.25.0

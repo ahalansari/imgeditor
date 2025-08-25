@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qwen Image Editor - Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #545b62;
+        }
+        .processing {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Qwen Image Editor - Result</h1>
+        
+        {% if original_image %}
+        <div class="image-container">
+            <h3>Original Image</h3>
+            <img src="/uploads/{{ original_image }}" alt="Original Image">
+        </div>
+        {% endif %}
+        
+        {% if processed_image %}
+        <div class="image-container">
+            <h3>Processed Image</h3>
+            <img src="/output/{{ processed_image }}" alt="Processed Image">
+            <div style="margin-top: 15px;">
+                <a href="/output/{{ processed_image }}" download="{{ processed_image }}" class="btn btn-secondary">
+                    Download Processed Image
+                </a>
+            </div>
+        </div>
+        {% else %}
+        <div class="processing">
+            <p>❌ Image processing failed or no processed image available.</p>
+            <p>The original image has been preserved. You can try again with different instructions.</p>
+        </div>
+        {% endif %}
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="/" class="btn">Upload Another Image</a>
+        </div>
+        
+        <p style="text-align: center; margin-top: 30px; color: #666;">
+            This application uses the Qwen-Image-Edit model from Hugging Face to edit images.
+        </p>
+    </div>
+</body>
+</html>
